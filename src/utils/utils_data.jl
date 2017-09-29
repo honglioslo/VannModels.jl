@@ -107,3 +107,33 @@ function crop_data(date, tair, prec, q_obs, date_start)
 
 end
 
+# read netcdf file
+function read_netcdf(date, variable)
+
+  year  = Dates.format(date, "yyyy")
+  month = Dates.format(date, "mm")
+  day   = Dates.format(date, "dd")
+
+  if variable == "rr"
+    filename = "/hdata/grid/metdata/met_obs_v2.0/$(variable)/$(year)/$(variable)_$(year)_$(month)_$(day).nc"
+    data = ncread(filename, "precipitation_amount")
+  end
+
+  if variable == "tm"
+    filename = "/hdata/grid/metdata/met_obs_v2.0/$(variable)/$(year)/$(variable)_$(year)_$(month)_$(day).nc"
+    data = ncread(filename, "mean_temperature")
+  end
+
+  data = squeeze(data, 3)
+
+  data = map(x -> convert(Float64, x), data)
+
+  data = round(data, 2)
+
+  data = data[data .!= -999.99]
+
+  return data
+
+end
+
+
