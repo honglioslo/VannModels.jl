@@ -28,7 +28,7 @@ end
 
 mutable struct InputPT <: AbstractInput
 
-    prec::Array{Float64,1}
-    tair::Array{Float64,1}
+    prec::Float64
+    tair::Float64
 
 end
