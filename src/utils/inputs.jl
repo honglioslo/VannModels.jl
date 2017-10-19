@@ -8,16 +8,6 @@ mutable struct InputPTE <: AbstractInput
 
 end
 
-mutable struct InputPTE <: AbstractInput
-
-    prec::Float64
-    tair::Float64
-    epot::Float64
-
-end
-
-
-
 mutable struct InputPT <: AbstractInput
 
     prec::Array{Float64,2}
@@ -25,10 +15,3 @@ mutable struct InputPT <: AbstractInput
 
 end
 
-
-mutable struct InputPT <: AbstractInput
-
-    prec::Float64
-    tair::Float64
-
-end
