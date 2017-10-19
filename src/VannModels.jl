@@ -6,6 +6,7 @@ using BlackBoxOptim
 using CSV
 using Distributions
 using DataFrames
+using NetCDF
 
 # Abstract types
 
@@ -42,7 +43,7 @@ export model_gr4j
 # Utilities
 
 export run_timestep, run_model
-export load_data, crop_data
+export load_data, crop_data, read_netcdf
 export get_param_ranges
 export epot_zero, hamon, oudin
 export init_states!, set_params!
