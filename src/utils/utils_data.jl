@@ -107,9 +107,10 @@ function crop_data(date, tair, prec, q_obs, date_start)
 
 end
 
-# read netcdf file
-function read_netcdf(date, variable)
-
+# read SeNorge netcdf file
+function read_netcdf(date, variable, form = "d")
+  if form == "d"
+#######################################
   year  = Dates.format(date, "yyyy")
   month = Dates.format(date, "mm")
   day   = Dates.format(date, "dd")
@@ -123,8 +124,29 @@ function read_netcdf(date, variable)
     filename = "/hdata/grid/metdata/met_obs_v2.0/$(variable)/$(year)/$(variable)_$(year)_$(month)_$(day).nc"
     data = ncread(filename, "mean_temperature")
   end
+###############################################
+  end
+
+  if form == "a"
+#######################################
+  year  = Dates.format(date, "yyyy")
+
+  if variable == "rr"
+    filename = "/hdata/grid/metdata/met_obs_v2.1/$(variable)/archieve/seNorge_v2_1_PREC1d_grid_$(year).nc"
+    data = ncread(filename, "precipitation_amount")
+  end
+
+  if variable == "tm"
+    filename = "/hdata/grid/metdata/met_obs_v2.1/$(variable)/archieve/seNorge_v2_1_TEMP1d_grid_$(year).nc"
+    data = ncread(filename, "mean_temperature")
+  end
+###############################################
+  end
+
   return data
 
 end
+
+
 
 
