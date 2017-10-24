@@ -42,7 +42,7 @@ export model_gr4j
 
 # Utilities
 
-export run_timestep, run_model
+export set_input, run_timestep, run_model
 export load_data, crop_data, read_netcdf
 export get_param_ranges
 export epot_zero, hamon, oudin
