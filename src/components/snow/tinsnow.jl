@@ -1,17 +1,23 @@
 # Snow component
 
 mutable struct TinSnow <: AbstractSnow
-    
-    swe::Array{Float64,2}
+    tstep::Float64
+    time::DateTime
+
+    # parameters
     tth::Float64
     ddf::Float64
     pcorr::Float64
-    p_in::Array{Float64,1}
-    tair::Array{Float64,1}
-    q_out::Array{Float64,2}
+    # input precipitation 
+    p_in::Array{Float64,1}    
+    # input land use percentae
     frac_lus::Array{Float64,2}
-    tstep::Float64
-    time::DateTime
+    # input temperature 
+    tair::Array{Float64,1}
+    # output snow water equalivient
+    swe::Array{Float64,2}
+    # output runoff from snowpack
+    q_out::Array{Float64,2}
     
 end
 
